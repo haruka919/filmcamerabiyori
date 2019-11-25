@@ -1,0 +1,11 @@
+@mixin _mq-dowm($breakpoint: md) {
+    @media #{map-get($_breakpoint-dowm, $breakpoint)} {
+      @content;
+    }
+  }
+  
+  @mixin _mq-up($breakpoint: md) {
+    @media #{map-get($_breakpoint-up, $breakpoint)} {
+      @content;
+    }
+  }

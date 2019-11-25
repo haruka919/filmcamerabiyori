@@ -1,0 +1,44 @@
+.p-profile{
+  display: flex;
+  margin-bottom: 10px;
+  &-wrapper{
+    margin-bottom: 35px;  
+  }
+  &-avator{
+    width: 95px;
+  }
+  &-textWrapper{
+    padding: 10px 0 0 10px;
+  }
+  &-name{
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  &-link{
+    display: block;
+    background-color: $_color-bg--main;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid #BFBFBF;
+  }
+  &-posts{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &-post{
+    width: calc(( 100% - 30px ) / 2);
+    margin-right: 30px;
+    &:nth-of-type(2n){
+      margin-right: 0;
+    }
+    &-textWrapper{
+      text-align: center;
+    }
+    &-title{
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+  }
+}

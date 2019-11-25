@@ -1,0 +1,77 @@
+.p-form{
+    width: 100%;
+    &-wrapper{
+        background-color: $_color-bg--main;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    &__logo{
+        text-align: center;
+        margin-bottom: 30px;
+        img{
+            width: 200px;
+        }
+    }
+    input{
+        display: block;
+        width: 100%;
+        height: 60px;
+        margin-bottom: 20px;
+        background-color: rgba(255,255,255,0.2);
+        border: none;
+        font-size: 16px;
+        outline: none;
+        padding: 10px;
+        border-radius: 5px;
+        &::placeholder {
+            color: #fff;
+        }
+        &.is-error{
+            border: 1px solid #990000;
+            background:#FFEBE8;
+            color:#262626;
+            &::placeholder {
+                color:#262626;
+            }
+        }
+    }
+    button{
+        display: block;
+        width: 100%;
+        height: 60px;
+        margin-bottom: 20px;
+        background-color: transparent;
+        border: none;
+        font-size: 16px;
+        outline: none;
+        padding: 10px;
+        color: #fff;
+        border: 1px solid #fff;
+        transition: 0.2s;
+        border-radius: 5px;
+        &:hover{
+            background-color: #fff;
+            color: $_color-bg--main;
+            cursor: pointer;
+        }
+    }
+    &__txt{
+        text-align: center;
+        font-size: 12px;
+        color: $_color-accent;
+        &-link{
+            color: $_color-accent;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+    &__errorMsg{
+        color: #990000;
+        margin-bottom: 20px;
+        display: block;
+        margin-top: -10px;
+    }
+}
