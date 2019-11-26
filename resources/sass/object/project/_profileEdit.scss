@@ -1,9 +1,11 @@
 .p-profileEdit{
+  &-inner{
+    max-width: 600px;
+  }
   &-header{
     padding: 0 5%;
     width: 100%;
     height: 70px;
-    margin-bottom: 40px;
     background-color: #F0F0F0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     &__inner{
@@ -25,17 +27,23 @@
       color: $_color-base;
       position: absolute;
       right: 0;
+      background-color: transparent;
+      font-weight: bold;
+      cursor: pointer;
+      width: 70px;
+      font-size: 16px;
+      border: none;
     }
   }
   &-form{
     margin-bottom: 50px;
     dl{
-      border-top: 1px solid $_color-line;
+      border-top: 1px solid #F0F0F0;
       padding: 16px;
       display: flex;
       align-items: center;
       &:last-child{
-        border-bottom: 1px solid $_color-line;
+        border-bottom: 1px solid #F0F0F0;
       }
       > dt{
         width: 80px;
@@ -47,7 +55,11 @@
         input,textarea{
           width: 100%;
           font-size: 16px;
-          outline: none;
+          outline: #f0f0f0;
+          border: none;
+          &:focus{
+            background-color:#f0f0f0;
+          }
         } 
       }
     }

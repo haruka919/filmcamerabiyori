@@ -24,10 +24,13 @@ Route::post('/users/update', 'UsersController@update');
 // ユーザー詳細画面
 Route::get('/users/{user_id}', 'UsersController@show');
 
+// タグ一覧画面
+Route::get('/tags/search', 'TagsController@search')->name('search');
+
 // 新規登録画面
 Route::get('/posts/new', 'PostsController@new')->name('new');
 // 投稿新規処理
-Route::post('/posts', 'PostsController@store');
+Route::post('/posts','PostsController@store');
 // 投稿詳細画面
 Route::get('/posts/{post_id}', 'PostsController@show');
 

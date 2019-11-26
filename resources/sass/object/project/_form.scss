@@ -15,7 +15,7 @@
             width: 200px;
         }
     }
-    input{
+    &__input{
         display: block;
         width: 100%;
         height: 60px;
@@ -38,7 +38,7 @@
             }
         }
     }
-    button{
+    &__submit{
         display: block;
         width: 100%;
         height: 60px;

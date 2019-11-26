@@ -1,89 +1,49 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('title', 'Top')
 
-    <title>{{ config('app.name', 'filmcamerabiyori') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-</head>
-<body>
-    <header class="l-header p-header">
-        <h1 class="p-header__logo"><a href="/filmcamerabiyori-dev/"><img src="./../image/sitelogo.svg" alt="フィルムカメラ日和"></a></h1>
-    </header>
+@section('content')
     <main>
-        <div class="p-wrapper-l" style="background: #000;">
-            <form action="{{ url('posts') }}" enctype="multipart/form-data" method="post" class="p-form" accept-charset="UTF-8" method="POST">
+        <div class="p-profileEdit-wrapper">
+            <form class="p-form" action="{{ url('posts')}}" method="POST"  accept-charset="UTF-8" enctype="multipart/form-data">
+                <input name="utf8" type="hidden" value="✓" />
+                {{-- <input type="hidden" name="id" value="{{ $user->id }}" /> --}}
                 @csrf
+                <div class="p-profileEdit-header">
+                    <div class="p-profileEdit-header__inner">
+                        <a class="p-profileEdit-header__cancel" href="{{ url()->previous() }}">キャンセル</a>
+                        <h1 class="p-profileEdit-header__title">#編集する</h1>
+                        <input type="submit" name="commit" value="保存" class="p-profileEdit-header__submit">
+                    </div>
+                </div>
+                <div class="p-wrapper-l p-postEdit-wrapper">
+                    <label class="p-postEdit-form__pic js-form-pic">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+                        <input type="file" class="p-postEdit-form__pic-input js-form-picFile" name="photo"  value="{{ old('photo') }}" accept="image/jpeg,image/gif,image/png" />
+                        <img class="p-postEdit-form__pic-preview js-form-preview" src={{ asset('image/dammy.jpg') }} alt="">
+                        <i class="fas fa-plus p-postEdit-form__icon"></i>
+                    </label>
 
-                <input type="text" name="title" class="p-form__input @error('title') is-error @enderror"　value="{{ old('title') }}"required placeholder="タイトルを書く">
-                @error('title')
-                <span class="p-form__errorMsg" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-
-                <input type="text" name="caption" class="p-form__input @error('caption') is-error @enderror" value="{{ old('caption') }}" placeholder="キャプションを書く">
-                @error('caption')
-                <span class="p-form__errorMsg" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-
-                @for ($i = 1; $i <= 2; $i++)
-                    <input type="text" name="tags[]" class="p-form__input @error('tags[]'.$i) is-error @enderror"　value="{{ old('tags[]'.$i) }}" placeholder="タグを書く">
-
-                    @error('tags[]'.$i)
-                    <span class="p-form__errorMsg" role="alert">
+                    <input type="text" name="title" class="p-postEdit-form__input @error('title') is-error @enderror"　value="{{ old('title') }}"required placeholder="タイトルを書く">
+                    @error('title')
+                    <span class="p-postEdit-form__errorMsg" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
-                @endfor
 
-                <input type="file" name="photo" accept="image/jpeg,image/gif,image/png">
+                    <div class="p-postEdit-form__input-tags">
+                        @for ($i = 1; $i <= 10; $i++)
+                            <input type="text" name="tags[]" class="p-postEdit-form__input-tag @error('tags[]'.$i) is-error @enderror"　value="{{ old('tags[]'.$i) }}" placeholder="#タグ">
 
-                <button type="submit" class="p-form__submit">
-                    {{ __('Register') }}
-                </button>
-                
+                            @error('tags[]'.$i)
+                            <span class="p-postEdit-form__errorMsg" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        @endfor
+                    </div>
+                </div>
             </form>
         </div>
     </main>
-    <footer class="l-footer p-footer">
-        <nav>
-            <ul class="p-footer-menu">
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/"><img src="image/menu-home.svg" alt=""></a></li>
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/search.php"><img src="image/menu-search.svg" alt=""></a></li>
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/edit.php"><img src="image/menu-post.svg" alt=""></a></li>
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/favorite.php"><img src="image/menu-favorite.svg" alt=""></a></li>
-                @guest
-                <li class="p-footer-menu__item"><a href="{{ route('login') }}"><img src="image/login.jpg" alt=""></a></li>
-                @else
-                <li class="p-footer-menu__item"><a href="/users/{{ Auth::user()->id}}"><img src="image/update/author/author01.png" alt=""></a></li>
-                @endguest
-
-            </ul>
-        </nav>
-    </footer>
-    <script type="text/javascript">
-        $('#post_image').bind('change', function() {
-            var size_in_megabytes = this.files[0].size/1024/1024;
-            if (size_in_megabytes > 1) {
-            alert('ファイルサイズの最大は1MBまでです。違う画像を選んでください。');
-        }
-        });
-    </script>
-</body>
-</html>
+@endsection

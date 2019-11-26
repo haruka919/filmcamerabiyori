@@ -1,26 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@section('title', 'Top')
 
-    <title>{{ config('app.name', 'filmcamerabiyori') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-</head>
-
-<body>
+@section('content')
     <main>
         <div class="p-profileEdit-wrapper">
             <form class="p-profileEdit" action="/users/update" method="post"  accept-charset="UTF-8" enctype="multipart/form-data">
@@ -34,7 +16,7 @@
                         <input type="submit" name="commit" value="保存" class="p-profileEdit-header__submit">
                     </div>
                 </div>
-                <div class="p-wrapper-l">
+                <div class="p-wrapper-l p-profileEdit-inner">
                     <div class="p-profileEdit-form">
                         <div class="p-profileEdit-form__pic-wrapper">
                             <label class="p-profileEdit-form__pic js-form-pic">
@@ -43,7 +25,7 @@
                                 @if ($user->profile_photo)
                                     <img class="js-form-preview" src="{{ asset('storage/user_images/' .$user->profile_photo) }}" alt="avatar" />
                                 @else
-                                    <img class="js-form-preview" src="image/dammy.jpg" alt="">
+                                    <img class="js-form-preview" src={{ asset('image/dammy.jpg') }} alt="">
                                 @endif
                                 <i class="fas fa-plus profile-icon"></i>
                             </label>
@@ -51,7 +33,7 @@
 
                         <dl>
                             <dt>
-                                <label for="name">ユーザー名</label>
+                                <label for="name">名前</label>
                             </dt>
                             <dd>
                                 <input type="text" name="name" id="name" class="@error('name') is-error @enderror" value="{{ old('name', $user->name) }}" autofocus>
@@ -94,23 +76,4 @@
             </form>
         </div>
     </main>
-
-    <footer class="l-footer p-footer">
-        <nav>
-            <ul class="p-footer-menu">
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/"><img src="./../image/menu-home.svg" alt=""></a></li>
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/search.php"><img src="./../image/menu-search.svg" alt=""></a></li>
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/edit.php"><img src="./../image/menu-post.svg" alt=""></a></li>
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/favorite.php"><img src="./../image/menu-favorite.svg" alt=""></a></li>
-                @guest
-                <li class="p-footer-menu__item"><a href="{{ route('login') }}"><img src="./../image/login.jpg" alt=""></a></li>
-                @else
-                <li class="p-footer-menu__item"><a href="/filmcamerabiyori-dev/profile.php"><img src="./../image/update/author/author01.png" alt=""></a></li>
-                @endguest
-
-            </ul>
-        </nav>
-    </footer>
-    </body>
-
-</html>
+@endsection

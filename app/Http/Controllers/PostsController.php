@@ -18,7 +18,6 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all();
-        
         return view('post/index', ['posts' => $posts]);
     }
 
@@ -30,8 +29,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
-            'caption' => 'required|string|max:255', 
+            'title' => 'required|string|max:50',
             'photo' => 'required'
         ]);
 
@@ -42,13 +40,9 @@ class PostsController extends Controller
         
         $post = new Post;
         $post->title = $request->title;
-        $post->caption = $request->caption;
         $post->user_id = Auth::user()->id;
         $post->save();
-
-
         $request->photo->storeAs('public/post_images', $post->id . '.jpg');
-
         // タグの登録
         $tags_name = $request->input('tags');
         $tag_ids = [];
@@ -60,14 +54,13 @@ class PostsController extends Controller
                 $tag_ids[] = $tag->id;
             }
         }
-        // dd($tag_ids);
- 
         // 中間テーブル
         $post->tags()->attach($tag_ids);
         
         return redirect('/')->with('success', '投稿しました');
 
     }
+
     public function show($id)
     {
         $post = Post::where('id', $id)->firstOrFail();
@@ -75,6 +68,6 @@ class PostsController extends Controller
     }
     public function showByTag($id){
         $tag = Tag::find($id);
-        return view('post/tag', ['posts' => $tag->posts]);
+        return view('post/tag', ['posts' => $tag->posts, 'tag' => $tag]);
     }
 }

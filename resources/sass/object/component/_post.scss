@@ -3,6 +3,7 @@
 // ========================================
 .c-posts{
   width: 100%;
+  justify-content: space-between;
   @include _mq-up(sm){
     display: flex;
     flex-wrap: wrap;
@@ -12,33 +13,12 @@
   margin-bottom: 35px;
   @include _mq-up(sm){
     width: calc(( 100% - 30px ) / 2);
-    margin-right: 30px;
-    &:nth-of-type(2n){
-      margin-right: 0;
-    }
   }
   @include _mq-up(){
     width: calc(( 100% - 60px ) / 3);
-    margin-right: 30px;
-    &:nth-of-type(2n){
-      margin-right: 30px;
-    }
-    &:nth-of-type(3n){
-      margin-right: 0;
-    }
   }
   @include _mq-up(xl){
     width: calc(( 100% - 90px ) / 4);
-    margin-right: 30px;
-    &:nth-of-type(2n){
-      margin-right: 30px;
-    }
-    &:nth-of-type(3n){
-      margin-right: 30px;
-    }
-    &:nth-of-type(4n){
-      margin-right: 0;
-    }
   }
   a{
     display: block;

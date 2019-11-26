@@ -338,6 +338,8 @@ pre {
 
 .c-posts {
   width: 100%;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
 }
 
 @media screen and (min-width: 415px) {
@@ -355,45 +357,18 @@ pre {
 @media screen and (min-width: 415px) {
   .c-post {
     width: calc(( 100% - 30px ) / 2);
-    margin-right: 30px;
-  }
-
-  .c-post:nth-of-type(2n) {
-    margin-right: 0;
   }
 }
 
 @media screen and (min-width: 768px) {
   .c-post {
     width: calc(( 100% - 60px ) / 3);
-    margin-right: 30px;
-  }
-
-  .c-post:nth-of-type(2n) {
-    margin-right: 30px;
-  }
-
-  .c-post:nth-of-type(3n) {
-    margin-right: 0;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .c-post {
     width: calc(( 100% - 90px ) / 4);
-    margin-right: 30px;
-  }
-
-  .c-post:nth-of-type(2n) {
-    margin-right: 30px;
-  }
-
-  .c-post:nth-of-type(3n) {
-    margin-right: 30px;
-  }
-
-  .c-post:nth-of-type(4n) {
-    margin-right: 0;
   }
 }
 
@@ -476,8 +451,9 @@ pre {
 /* project--------------- */
 
 .p-footer {
-  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  border-top: 1px solid #f0f0f0;
+  background-color: #F5F5F5;
+  height: 45px;
 }
 
 .p-footer--login {
@@ -505,6 +481,8 @@ pre {
 .p-footer-menu__item {
   -webkit-box-flex: 1;
           flex: 1;
+  text-align: center;
+  cursor: pointer;
 }
 
 .p-footer-menu__item:hover {
@@ -512,7 +490,11 @@ pre {
 }
 
 .p-footer-menu__item img {
-  height: 40px;
+  height: 25px;
+}
+
+.p-footer-menu__item.-icon img {
+  height: 30px;
 }
 
 .p-footer__txt {
@@ -552,7 +534,7 @@ pre {
   width: 200px;
 }
 
-.p-form input {
+.p-form__input {
   display: block;
   width: 100%;
   height: 60px;
@@ -565,53 +547,53 @@ pre {
   border-radius: 5px;
 }
 
-.p-form input::-webkit-input-placeholder {
+.p-form__input::-webkit-input-placeholder {
   color: #fff;
 }
 
-.p-form input::-moz-placeholder {
+.p-form__input::-moz-placeholder {
   color: #fff;
 }
 
-.p-form input:-ms-input-placeholder {
+.p-form__input:-ms-input-placeholder {
   color: #fff;
 }
 
-.p-form input::-ms-input-placeholder {
+.p-form__input::-ms-input-placeholder {
   color: #fff;
 }
 
-.p-form input::placeholder {
+.p-form__input::placeholder {
   color: #fff;
 }
 
-.p-form input.is-error {
+.p-form__input.is-error {
   border: 1px solid #990000;
   background: #FFEBE8;
   color: #262626;
 }
 
-.p-form input.is-error::-webkit-input-placeholder {
+.p-form__input.is-error::-webkit-input-placeholder {
   color: #262626;
 }
 
-.p-form input.is-error::-moz-placeholder {
+.p-form__input.is-error::-moz-placeholder {
   color: #262626;
 }
 
-.p-form input.is-error:-ms-input-placeholder {
+.p-form__input.is-error:-ms-input-placeholder {
   color: #262626;
 }
 
-.p-form input.is-error::-ms-input-placeholder {
+.p-form__input.is-error::-ms-input-placeholder {
   color: #262626;
 }
 
-.p-form input.is-error::placeholder {
+.p-form__input.is-error::placeholder {
   color: #262626;
 }
 
-.p-form button {
+.p-form__submit {
   display: block;
   width: 100%;
   height: 60px;
@@ -628,7 +610,7 @@ pre {
   border-radius: 5px;
 }
 
-.p-form button:hover {
+.p-form__submit:hover {
   background-color: #fff;
   color: #F2E2CE;
   cursor: pointer;
@@ -667,6 +649,170 @@ pre {
   width: 207px;
 }
 
+.p-postEdit-wrapper {
+  max-width: 600px;
+}
+
+.p-postEdit-form {
+  margin-bottom: 50px;
+}
+
+.p-postEdit-form__pic {
+  position: relative;
+  display: block;
+  background-color: #F0F0F0;
+  width: 100%;
+  padding-top: 66.6666%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+}
+
+.p-postEdit-form__pic-input {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.p-postEdit-form__pic-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.p-postEdit-form__icon {
+  position: absolute;
+  top: calc( 50% - 15px);
+  left: calc( 50% - 15px);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.p-postEdit-form__input {
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  font-size: 16px;
+  outline: none;
+  padding: 10px;
+  border: 1px solid #F0F0F0;
+}
+
+.p-postEdit-form__input::-webkit-input-placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input::-moz-placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input:-ms-input-placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input::-ms-input-placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input::placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input.is-error {
+  border: 1px solid #990000;
+  background: #FFEBE8;
+  color: #262626;
+}
+
+.p-postEdit-form__input.is-error::-webkit-input-placeholder {
+  color: #262626;
+}
+
+.p-postEdit-form__input.is-error::-moz-placeholder {
+  color: #262626;
+}
+
+.p-postEdit-form__input.is-error:-ms-input-placeholder {
+  color: #262626;
+}
+
+.p-postEdit-form__input.is-error::-ms-input-placeholder {
+  color: #262626;
+}
+
+.p-postEdit-form__input.is-error::placeholder {
+  color: #262626;
+}
+
+.p-postEdit-form__input-tags {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.p-postEdit-form__input-tag {
+  display: block;
+  width: calc(( 100% - 10px) / 2);
+  height: 40px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  font-size: 16px;
+  outline: none;
+  padding: 10px;
+  border: 1px solid #F0F0F0;
+}
+
+.p-postEdit-form__input-tag::-webkit-input-placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input-tag::-moz-placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input-tag:-ms-input-placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input-tag::-ms-input-placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__input-tag::placeholder {
+  color: #F0F0F0;
+}
+
+.p-postEdit-form__submit {
+  display: block;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 20px;
+  background-color: #ccc;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  padding: 10px;
+  color: #fff;
+  border: 1px solid #fff;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.p-postEdit-form__submit:hover {
+  background-color: #fff;
+  color: #F2E2CE;
+  cursor: pointer;
+}
+
 .p-profile {
   display: -webkit-box;
   display: flex;
@@ -688,6 +834,11 @@ pre {
 .p-profile-name {
   font-size: 20px;
   margin-bottom: 15px;
+}
+
+.p-profile-setting {
+  width: 16px;
+  cursor: pointer;
 }
 
 .p-profile-link {
@@ -724,11 +875,14 @@ pre {
   margin-bottom: 0;
 }
 
+.p-profileEdit-inner {
+  max-width: 600px;
+}
+
 .p-profileEdit-header {
   padding: 0 5%;
   width: 100%;
   height: 70px;
-  margin-bottom: 40px;
   background-color: #F0F0F0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
@@ -758,6 +912,12 @@ pre {
   color: #CBCBCB;
   position: absolute;
   right: 0;
+  background-color: transparent;
+  font-weight: bold;
+  cursor: pointer;
+  width: 70px;
+  font-size: 16px;
+  border: none;
 }
 
 .p-profileEdit-form {
@@ -765,7 +925,7 @@ pre {
 }
 
 .p-profileEdit-form dl {
-  border-top: 1px solid #D5D5D5;
+  border-top: 1px solid #F0F0F0;
   padding: 16px;
   display: -webkit-box;
   display: flex;
@@ -774,7 +934,7 @@ pre {
 }
 
 .p-profileEdit-form dl:last-child {
-  border-bottom: 1px solid #D5D5D5;
+  border-bottom: 1px solid #F0F0F0;
 }
 
 .p-profileEdit-form dl > dt {
@@ -792,7 +952,13 @@ pre {
 .p-profileEdit-form dl > dd textarea {
   width: 100%;
   font-size: 16px;
-  outline: none;
+  outline: #f0f0f0;
+  border: none;
+}
+
+.p-profileEdit-form dl > dd input:focus,
+.p-profileEdit-form dl > dd textarea:focus {
+  background-color: #f0f0f0;
 }
 
 .p-profileEdit-form__pic {
@@ -838,7 +1004,6 @@ pre {
 }
 
 .p-search-wrapper {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
