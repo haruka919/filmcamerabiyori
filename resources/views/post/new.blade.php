@@ -16,31 +16,33 @@
                         <input type="submit" name="commit" value="保存" class="p-profileEdit-header__submit">
                     </div>
                 </div>
-                <div class="p-wrapper-l p-postEdit-wrapper">
-                    <label class="p-postEdit-form__pic js-form-pic">
-                        <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-                        <input type="file" class="p-postEdit-form__pic-input js-form-picFile" name="photo"  value="{{ old('photo') }}" accept="image/jpeg,image/gif,image/png" />
-                        <img class="p-postEdit-form__pic-preview js-form-preview" src={{ asset('image/dammy.jpg') }} alt="">
-                        <i class="fas fa-plus p-postEdit-form__icon"></i>
-                    </label>
-
-                    <input type="text" name="title" class="p-postEdit-form__input @error('title') is-error @enderror"　value="{{ old('title') }}"required placeholder="タイトルを書く">
-                    @error('title')
-                    <span class="p-postEdit-form__errorMsg" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-
-                    <div class="p-postEdit-form__input-tags">
-                        @for ($i = 1; $i <= 10; $i++)
-                            <input type="text" name="tags[]" class="p-postEdit-form__input-tag @error('tags[]'.$i) is-error @enderror"　value="{{ old('tags[]'.$i) }}" placeholder="#タグ">
-
-                            @error('tags[]'.$i)
-                            <span class="p-postEdit-form__errorMsg" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        @endfor
+                <div class="p-wrapper-l">
+                    <div class="p-postEdit-wrapper">
+                        <label class="p-postEdit-form__pic js-form-pic">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+                            <input type="file" class="p-postEdit-form__pic-input js-form-picFile" name="photo"  value="{{ old('photo') }}" accept="image/jpeg,image/gif,image/png" />
+                            <img class="p-postEdit-form__pic-preview js-form-preview" src={{ asset('image/dammy.jpg') }} alt="">
+                            <i class="fas fa-plus p-postEdit-form__icon"></i>
+                        </label>
+    
+                        <input type="text" name="title" class="p-postEdit-form__input @error('title') is-error @enderror"　value="{{ old('title') }}"required placeholder="タイトルを書く">
+                        @error('title')
+                        <span class="p-postEdit-form__errorMsg" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+    
+                        <div class="p-postEdit-form__input-tags">
+                            @for ($i = 1; $i <= 10; $i++)
+                                <input type="text" name="tags[]" class="p-postEdit-form__input-tag @error('tags[]'.$i) is-error @enderror"　value="{{ old('tags[]'.$i) }}" placeholder="#タグ">
+    
+                                @error('tags[]'.$i)
+                                <span class="p-postEdit-form__errorMsg" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            @endfor
+                        </div>
                     </div>
                 </div>
             </form>

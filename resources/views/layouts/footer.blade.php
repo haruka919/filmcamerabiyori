@@ -4,7 +4,7 @@
             <li class="p-footer-menu__item"><a href="/"><img src={{ asset('image/icon/home.png') }}></a></li>
             <li class="p-footer-menu__item"><a href={{ route('search') }}><img src={{ asset('image/icon/search.png') }}></a></li>
             <li class="p-footer-menu__item"><a href={{ route('new') }}><img src={{ asset('image/icon/new.png') }}></a></li>
-            <li class="p-footer-menu__item"><a href="/"><img src={{ asset('image/icon/favorite.png') }}></a></li>
+            <li class="p-footer-menu__item"><a href="{{ route('favorite') }}"><img src={{ asset('image/icon/favorite.png') }}></a></li>
 
             @guest
                 <li class="p-footer-menu__item"><a href={{ route('login') }}><img src={{ asset('image/login.jpg') }}></a></li>

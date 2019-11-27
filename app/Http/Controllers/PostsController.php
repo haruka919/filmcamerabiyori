@@ -70,4 +70,9 @@ class PostsController extends Controller
         $tag = Tag::find($id);
         return view('post/tag', ['posts' => $tag->posts, 'tag' => $tag]);
     }
+    public function destroy($post_id){
+        $post = Post::find($post_id);
+        $post->delete();
+        return redirect('/');
+    }
 }

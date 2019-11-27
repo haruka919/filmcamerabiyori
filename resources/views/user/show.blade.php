@@ -32,7 +32,7 @@
             {{ csrf_field() }}
             </form>
         </div>
-        <div class="c-posts p-profile-posts">
+        <div class="c-posts">
             @foreach ($posts as $post)
                 <div class="c-post p-profile-post">
                     <a href="/posts/{{ $post->id }}">

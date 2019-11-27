@@ -5,7 +5,6 @@
 @section('content')
     @include('layouts.header')
     <div class="p-wrapper-l">
-        <h2 class="c-posts-title">#{{ $tag->name}}で検索</h2>
         <div class="c-posts">
             @foreach ($posts as $post)
                 <div class="c-post">
@@ -26,11 +25,15 @@
                         <time class="c-post-info__date" datetime="2019-10-11">{{ $post->created_at->format('Y.m.d')}}</time>
                         </div>
                     </div>
+                    <div id="like-icon-post-{{ $post->id }}">
+                        @if ($post->likedBy(Auth::user())->count() > 0)
+                            <a class="c-post__likeIcon -loved" data-remote="true" rel="nofollow" data-method="DELETE" href="/likes/{{ $post->likedBy(Auth::user())->firstOrFail()->id }}">いいねを取り消す</a>
+                        @else
+                            <a class="c-post__likeIcon -love" data-remote="true" rel="nofollow" data-method="POST" href="/posts/{{ $post->id }}/likes">いいね</a>
+                        @endif
+                    </div>
                 </div>
             @endforeach
-            @empty($post)
-            <p>まだ投稿がこざいません。</p>  
-            @endempty
         </div>
     </div>
     @include('layouts.footer')

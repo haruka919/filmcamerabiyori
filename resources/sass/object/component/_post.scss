@@ -8,20 +8,33 @@
     display: flex;
     flex-wrap: wrap;
   }
+  &::after{
+    @include _mq-up(xl){
+      content:"";
+      display: block;
+      width:30%;
+    }
+  }
+  &-title{
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
 }
 .c-post{
   margin-bottom: 35px;
-  @include _mq-up(sm){
+  @include _mq-up(){
     width: calc(( 100% - 30px ) / 2);
   }
-  @include _mq-up(){
-    width: calc(( 100% - 60px ) / 3);
-  }
   @include _mq-up(xl){
-    width: calc(( 100% - 90px ) / 4);
+    width: calc(( 100% - 90px ) / 3);
   }
   a{
     display: block;
+  }
+  &-titleWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   &-title{
     font-size: 20px;
@@ -30,14 +43,14 @@
   &-image{
     position: relative;
     margin-bottom: 30px;
-    border: 3px solid #ffffff;
+    border: 5px solid #ffffff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     &::after{
       content: '';
       position: absolute;
       display: block;
       background-color: $_color-bg--main;
-      width: 50%;
+      width: 100%;
       height: 100%;
       z-index: -1;
       right: -15px;
@@ -67,6 +80,33 @@
     &__author{
       color: $_color-text;
       font-size: 12px;
+    }
+  }
+  &__likeIcon{
+    display: block;
+    overflow: hidden;
+    text-indent: 110%;
+    white-space: nowrap;
+    &.-love{
+      background-image: url("/image/icon/love.png");
+      background-repeat: no-repeat;
+      height: 20px;
+      width: 20px;
+      background-size: 20px !important;
+    }
+    &.-loved {
+      background-image: url("/image/icon/loved.png");
+      background-repeat: no-repeat;
+      height: 20px;
+      width: 20px;
+      background-size: 20px !important;
+    }
+  }
+  &-delete{
+    display: flex;
+    justify-content: flex-end;
+    &__icon{
+      width: 15px;
     }
   }
 }

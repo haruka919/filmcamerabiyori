@@ -33,6 +33,16 @@ Route::get('/posts/new', 'PostsController@new')->name('new');
 Route::post('/posts','PostsController@store');
 // 投稿詳細画面
 Route::get('/posts/{post_id}', 'PostsController@show');
+// 投稿削除機能
+Route::get('/posts/delete/{post_id}', 'PostsController@destroy');
 
 //タグ絞り込み一覧
 Route::get('/posts/{tag_id}/tag', 'PostsController@showByTag');
+
+// いいねの処理
+Route::get('/posts/{post_id}/likes', 'LikesController@store');
+// いいねの削除処理
+Route::get('/likes/{like_id}', 'LikesController@destroy');
+
+// いいね一覧
+Route::get('/likes', 'LikesController@index')->name('favorite');;

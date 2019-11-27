@@ -350,30 +350,46 @@ pre {
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .c-posts::after {
+    content: "";
+    display: block;
+    width: 30%;
+  }
+}
+
+.c-posts-title {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
 .c-post {
   margin-bottom: 35px;
 }
 
-@media screen and (min-width: 415px) {
+@media screen and (min-width: 768px) {
   .c-post {
     width: calc(( 100% - 30px ) / 2);
   }
 }
 
-@media screen and (min-width: 768px) {
-  .c-post {
-    width: calc(( 100% - 60px ) / 3);
-  }
-}
-
 @media screen and (min-width: 1200px) {
   .c-post {
-    width: calc(( 100% - 90px ) / 4);
+    width: calc(( 100% - 90px ) / 3);
   }
 }
 
 .c-post a {
   display: block;
+}
+
+.c-post-titleWrapper {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
 }
 
 .c-post-title {
@@ -384,7 +400,7 @@ pre {
 .c-post-image {
   position: relative;
   margin-bottom: 30px;
-  border: 3px solid #ffffff;
+  border: 5px solid #ffffff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -393,7 +409,7 @@ pre {
   position: absolute;
   display: block;
   background-color: #F2E2CE;
-  width: 50%;
+  width: 100%;
   height: 100%;
   z-index: -1;
   right: -15px;
@@ -431,6 +447,40 @@ pre {
 .c-post-info__author {
   color: #333;
   font-size: 12px;
+}
+
+.c-post__likeIcon {
+  display: block;
+  overflow: hidden;
+  text-indent: 110%;
+  white-space: nowrap;
+}
+
+.c-post__likeIcon.-love {
+  background-image: url("/image/icon/love.png");
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+  background-size: 20px !important;
+}
+
+.c-post__likeIcon.-loved {
+  background-image: url("/image/icon/loved.png");
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 20px;
+  background-size: 20px !important;
+}
+
+.c-post-delete {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+.c-post-delete__icon {
+  width: 15px;
 }
 
 .c-tags {
@@ -651,6 +701,7 @@ pre {
 
 .p-postEdit-wrapper {
   max-width: 600px;
+  margin: 0 auto;
 }
 
 .p-postEdit-form {
@@ -851,21 +902,6 @@ pre {
   border: 1px solid #BFBFBF;
 }
 
-.p-profile-posts {
-  display: -webkit-box;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.p-profile-post {
-  width: calc(( 100% - 30px ) / 2);
-  margin-right: 30px;
-}
-
-.p-profile-post:nth-of-type(2n) {
-  margin-right: 0;
-}
-
 .p-profile-post-textWrapper {
   text-align: center;
 }
@@ -1043,6 +1079,7 @@ pre {
 
 .p-wrapper-l {
   width: 100%;
+  max-width: 1200px;
   padding: 50px 5%;
   margin: 0 auto;
 }
