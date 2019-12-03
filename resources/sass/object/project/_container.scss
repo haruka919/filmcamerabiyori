@@ -1,0 +1,17 @@
+.p-container{
+  &-l{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  &-lm{
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  &-m{
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}

@@ -7,12 +7,19 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        overflow-y: hidden;
     }
     &__logo{
         text-align: center;
         margin-bottom: 30px;
+        a{
+            display: block;
+        }
         img{
-            width: 200px;
+            width: 150px;
+            @include _mq-up(){
+                width: 170px;
+            }
         }
     }
     &__input{

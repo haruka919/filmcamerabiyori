@@ -1,7 +1,4 @@
 .p-profileEdit{
-  &-inner{
-    max-width: 600px;
-  }
   &-header{
     padding: 0 5%;
     width: 100%;
@@ -16,7 +13,7 @@
     justify-content: center;
     }
     &__cancel{
-      color: $_color-link;
+      color: $_color-text;
       position: absolute;
       left: 0;
     }
@@ -24,7 +21,8 @@
       color: $_color-text;
     }
     &__submit{
-      color: $_color-base;
+      color: $_color-link;
+      outline: none;
       position: absolute;
       right: 0;
       background-color: transparent;
@@ -36,10 +34,9 @@
     }
   }
   &-form{
-    margin-bottom: 50px;
     dl{
       border-top: 1px solid #F0F0F0;
-      padding: 16px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       &:last-child{
@@ -55,6 +52,7 @@
         input,textarea{
           width: 100%;
           font-size: 16px;
+          line-height: 2;
           outline: #f0f0f0;
           border: none;
           &:focus{
@@ -75,6 +73,11 @@
       height: 200px;
       border-radius: 50%;
       overflow: hidden;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
       &-input{
         display: none;
       }

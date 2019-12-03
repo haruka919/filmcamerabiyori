@@ -1,7 +1,10 @@
 .p-footer{
   border-top: 1px solid #f0f0f0;
-  background-color: #F5F5F5;
-  height: 45px;
+  background-color: rgba( #F5F5F5, 0.95 );
+  height: 60px;
+  @include _mq-up(){
+    height: 80px;
+  }
   &--login{
     background-color: rgba(255,255,255,0.5);
     display: flex;
@@ -13,21 +16,46 @@
   }
   &-menu{
     display: flex;
-    align-items: center;
     height: 100%;
+    align-items: stretch;
     &__item{
       flex: 1;
-      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
-      &:hover{
-        cursor: pointer;
+      a{
+        display: inline-block;
       }
       img{
-        height: 25px;
+        height: 30px;
+        width: 30px;
+        object-fit: contain;
+        @include _mq-up(){
+          height: 48px;
+          width: 48px;
+        }
       }
       &.-icon img{
         height: 30px;
+        width: 30px;
+        object-fit: contain;
+        @include _mq-up(){
+          height: 48px;
+          width: 48px;
+        }
       }
+      &:last-child{
+        img{
+          height: 48px;
+          width: 48px;
+          object-fit: cover;
+        }
+      }
+    }
+    &__avator{
+      width: 48px;
+      height: 48px;
     }
   }
   &__txt{

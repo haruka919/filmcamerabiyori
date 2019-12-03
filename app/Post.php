@@ -26,6 +26,6 @@ class Post extends Model
     }
     Public function likedBy($user)
     {
-      return Like::where('user_id', $user->id)->where('post_id', $this->id);
+        return Like::where('user_id', $user->id)->where('post_id', $this->id);
     }
 }

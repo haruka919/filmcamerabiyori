@@ -3,21 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\like;
+use App\Like;
 use App\Post;
+use App\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
         $like = Like::where('user_id', Auth::user()->id)->pluck('post_id');
         $posts = Post::find($like);
-        return view('like/index', ['posts' => $posts]);
+        $tagmenus = Tag::all();
+        return view('post/index', ['posts' => $posts, 'tagmenus' => $tagmenus]);
     }
 
     public function store(Request $request)
@@ -27,13 +25,11 @@ class LikesController extends Controller
         $like->user_id = Auth::user()->id;
         $like->save();
 
-        return redirect('/');
     }
 
     public function destroy(Request $request)
     {
         $like = Like::find($request->like_id);
         $like->delete();
-        return redirect('/');
     }
 }

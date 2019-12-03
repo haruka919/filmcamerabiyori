@@ -2,7 +2,6 @@
 // p-post
 // ========================================
 .c-posts{
-  width: 100%;
   justify-content: space-between;
   @include _mq-up(sm){
     display: flex;
@@ -45,7 +44,8 @@
     margin-bottom: 30px;
     border: 5px solid #ffffff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    &::after{
+    transition: 400ms;
+    &::before{
       content: '';
       position: absolute;
       display: block;
@@ -55,6 +55,29 @@
       z-index: -1;
       right: -15px;
       bottom: -15px;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      display: block;
+      background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      right: -15px;
+      bottom: -15px;
+      opacity: 0;
+      transition: 400ms;
+    }
+  }
+  a:hover{
+    .c-post{
+      &-image{
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        &::after{
+          opacity: 1;
+        }
+      }
     }
   }
   &-info{
@@ -75,6 +98,7 @@
     }
     &__avator{
       width: 20px;
+      height: 20px;
       margin-right: 5px;
     }
     &__author{
@@ -88,25 +112,25 @@
     text-indent: 110%;
     white-space: nowrap;
     &.-love{
-      background-image: url("/image/icon/love.png");
+      background-image: url("/image/icon/like.svg");
       background-repeat: no-repeat;
       height: 20px;
       width: 20px;
       background-size: 20px !important;
     }
     &.-loved {
-      background-image: url("/image/icon/loved.png");
+      background-image: url("/image/icon/like_on.svg");
       background-repeat: no-repeat;
       height: 20px;
       width: 20px;
       background-size: 20px !important;
     }
   }
-  &-delete{
-    display: flex;
-    justify-content: flex-end;
-    &__icon{
-      width: 15px;
+  &__likeIconfont{
+    &::before{
+      content: "\E008";
+      font-family: 'myfont', sans-serif;
+      display: block;
     }
   }
 }

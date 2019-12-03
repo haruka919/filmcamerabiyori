@@ -1,0 +1,40 @@
+.p-modal{
+    &__close{
+        width: 20px;
+    }
+    &__wrapper{
+        background-color: rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0 5%;
+        z-index: 100;
+        display: none;
+    }
+    &__container{
+        position: relative;
+        max-width: 960px;
+        width: 100%;
+        height: 30vh;
+        margin: 20vh auto;
+        background-color: #fff;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__close{
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        cursor: pointer;
+    }
+    &__btn{
+        display: block;
+        padding: 15px 30px;
+        background-color: #f1f1f1;
+        border-radius: 5px;        
+    }
+}

@@ -10,15 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $posts = Post::all();
-        return view('post/index', ['posts' => $posts]);
+        $tagmenus = Tag::all();
+        return view('post/index', ['posts' => $posts, 'tagmenus' => $tagmenus]);
     }
 
     public function new()
@@ -30,19 +26,32 @@ class PostsController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:50',
-            'photo' => 'required'
+            'photo' => 'required|file|image'
         ]);
 
         if($validator->fails())
         {
             return redirect()->back()->withErrors($validator->errors())->withInput();
         }
+
+        $photo = $request->file('photo');
+        $img = \Image::make($photo);
+        $width = 600;
+        $img->resize($width, null, function($constraint){
+            $constraint->aspectRatio();
+        });
         
         $post = new Post;
         $post->title = $request->title;
         $post->user_id = Auth::user()->id;
         $post->save();
-        $request->photo->storeAs('public/post_images', $post->id . '.jpg');
+
+        //画像登録
+        $file_name = $post->id . '.jpg';
+        $save_path = storage_path('app/public/post_images/'.$file_name);        
+        $img->save($save_path);
+
+
         // タグの登録
         $tags_name = $request->input('tags');
         $tag_ids = [];
@@ -56,9 +65,7 @@ class PostsController extends Controller
         }
         // 中間テーブル
         $post->tags()->attach($tag_ids);
-        
         return redirect('/')->with('success', '投稿しました');
-
     }
 
     public function show($id)
@@ -68,7 +75,8 @@ class PostsController extends Controller
     }
     public function showByTag($id){
         $tag = Tag::find($id);
-        return view('post/tag', ['posts' => $tag->posts, 'tag' => $tag]);
+        $tagmenus = Tag::all();
+        return view('post/tag', ['posts' => $tag->posts, 'tag' => $tag, 'tagmenus' => $tagmenus]);
     }
     public function destroy($post_id){
         $post = Post::find($post_id);

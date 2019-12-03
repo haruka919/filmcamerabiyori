@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="p-wrapper-l">
-                    <div class="p-postEdit-wrapper">
+                    <div class="p-container-m">
                         <label class="p-postEdit-form__pic js-form-pic">
                             <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
                             <input type="file" class="p-postEdit-form__pic-input js-form-picFile" name="photo"  value="{{ old('photo') }}" accept="image/jpeg,image/gif,image/png" />

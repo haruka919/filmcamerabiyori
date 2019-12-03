@@ -1,10 +1,14 @@
 .p-returnLink{
   text-align: center;
+  padding: 20px;
+  a{
+    display: inline-block;
+  }
   &-icon{
-    width: 20px;
-    margin-right: 10px;
+    width: 15px;
   }
   span{
     font-size: 12px;
+    vertical-align: middle;
   }
 }

@@ -1,8 +1,8 @@
 .p-wrapper{
   &-l{
-    width: 100%;
-    max-width: 1200px;
-    padding: 50px 5%;
-    margin: 0 auto;
+    padding: 40px 5% 80px;
+    @include _mq-up(){
+      padding: 80px 5%;
+    }
   }
 }

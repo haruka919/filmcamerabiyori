@@ -49,21 +49,76 @@ $fileInput.on('change', function(e){
   fileReader.readAsDataURL(file);
 });
 
+  /* footer */
+  $('.js-footer-menu a').each(function () {
+    var $href = $(this).attr('href');
+    if (location.href.match($href)) {
+      $(this).addClass('is-active');
+    } else {
+      $(this).removeClass('is-active');
+    }
+  });
 
-// modal
-var $searchTags = $('.js-search-tags');
-var $showTags = $('.js-show-tags');
+  /* Modal */
+  $('.js-setting__open').on('click', function () {
+    $('.js-setting__wrapper').fadeIn();
+  });
 
-//show-panelボタンをクリックしたらLightBoxを表示する
-$searchTags.click(function () {
-  $showTags.css('display', 'block');
-});
-// //CloseボタンをクリックしたらLightBoxを閉じる
-// $(".fn_close-panel").click(function () {
-//   $(".dogPanel").fadeOut(300);/*フェードアウトの速度は数値を調整*/
-//   // $("#BlackWindow, #youkai-panel").fadeOut(300);/*フェードアウトの速度は数値を調整*/
-// })
-//背景の黒地をクリックしたらLightBoxを閉じる
-$showTags.click(function () {
-  $showTags.css('display', 'none');
-});
+  $('.js-setting__close, .js-setting__wrapper').on('click', function () {
+    $('.js-setting__wrapper').fadeOut();
+  });
+  $('.js-setting__container').on('click', function (e) {
+    e.stopPropagation();
+  });
+
+  /* SearchTags */
+  $('.js-search__open').on('click', function () {
+    $('.js-search__wrapper').fadeIn();
+  });
+
+  $('.js-search__close').on('click', function () {
+    $('.js-search__wrapper').fadeOut();
+  });
+  $('.js-search__wrapper').on('click', function (e) {
+    e.stopPropagation();
+  });
+
+  // LOADING ANIMETION
+  var h = $(window).height();
+
+  $(window).ready(function () {
+    $('#is-loading').delay(900).fadeOut(800);
+    $('#loading').delay(600).fadeOut(300);
+  });
+
+  $(function () {
+    setTimeout(stopload, 10000);
+  });
+
+  function stopload() {
+    $('#loading__wrapper').css('display', 'block');
+    $('#is-loading').delay(900).fadeOut(800);
+    $('#loading').delay(600).fadeOut(300);
+  }
+
+  $('.js-like-add').on('click', function () {
+    var PostId = $(this).data('postid');
+    $.ajax({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      url: "/posts/" + PostId + "/likes",
+      type: 'POST',
+      data: { 'post_id': PostId },
+      dataType : "json",
+    })
+    // Ajaxリクエストが成功した場合
+    .done(function (data) {
+      
+      $('.add_message').text(data.responseJSON);
+    })
+    // Ajaxリクエストが失敗した場合
+    .fail(function (data) {
+      console.lof(data.responseJSON);
+    });
+  });
