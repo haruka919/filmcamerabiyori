@@ -18,18 +18,19 @@ class LikesController extends Controller
         return view('post/index', ['posts' => $posts, 'tagmenus' => $tagmenus]);
     }
 
-    public function store(Request $request)
-    {
-        $like = new Like;
-        $like->post_id = $request->post_id;
-        $like->user_id = Auth::user()->id;
-        $like->save();
-
-    }
-
-    public function destroy(Request $request)
-    {
-        $like = Like::find($request->like_id);
-        $like->delete();
+    public function ajaxlike(Request $request)
+    {    
+        $post_id = $request->post_id;
+        $liked = Like::where('post_id', $post_id)->where('user_id', Auth::user()->id)->count();
+        if($liked > 0){
+            $like = Like::where('post_id', $post_id)->where('user_id', Auth::user()->id)->delete();
+            return response()->json($like);
+        }else{
+            $like = new Like;
+            $like->post_id = $request->post_id;
+            $like->user_id = Auth::user()->id;
+            $like->save();
+            return response()->json($like);
+        }
     }
 }

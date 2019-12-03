@@ -25,14 +25,10 @@
                             <h2 class="c-post-title">{{ $post->title }}</h2>
                             <div class="c-post__likeIcon-wrapper">
                                 @guest
-                                <a class="c-post__likeIcon -love js-like-add" data-remote="true" rel="nofollow" data-method="POST" href="/posts/{{ $post->id }}/likes">いいね</a>
+                                    <a class="c-post__likeIcon -love" data-remote="true" rel="nofollow" data-postid="{{ $post->id }}" href="/posts/ajaxlike">いいね</a>
                                 @endguest
                                 @auth
-                                    @if ($post->likedBy(Auth::user())->count() > 0)
-                                        <a class="c-post__likeIcon -loved js-like-delete" data-remote="true" rel="nofollow" data-method="DELETE" href="/likes/{{ $post->likedBy(Auth::user())->firstOrFail()->id }}"></a>
-                                    @else
-                                        <a class="c-post__likeIcon -love js-like-add" data-remote="true" rel="nofollow" data-postid="{{ $post->id }}">いいね</a>
-                                    @endif
+                                    <a class="c-post__likeIcon -love js-like-change <?php if($post->likedBy(Auth::user())->count() > 0){{ echo 'loved'; }}?>" data-remote="true" rel="nofollow" data-postid="{{ $post->id }}">いいね</a>
                                 @endauth
                             </div>
                         </div>

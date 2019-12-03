@@ -101,24 +101,31 @@ $fileInput.on('change', function(e){
     $('#loading').delay(600).fadeOut(300);
   }
 
-  $('.js-like-add').on('click', function () {
-    var PostId = $(this).data('postid');
-    $.ajax({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      },
-      url: "/posts/" + PostId + "/likes",
-      type: 'POST',
-      data: { 'post_id': PostId },
-      dataType : "json",
-    })
-    // Ajaxリクエストが成功した場合
-    .done(function (data) {
-      
-      $('.add_message').text(data.responseJSON);
-    })
-    // Ajaxリクエストが失敗した場合
-    .fail(function (data) {
-      console.lof(data.responseJSON);
+
+  //like
+  var $like = $('.js-like-change');
+  var likePostId;
+    $like.on('click', function () {
+      var $this = $(this);
+      likePostId = $this.data('postid'); 
+      $.ajax({
+    　　headers: {
+    　　　'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    　　},
+        url: '/posts/ajaxlike',
+        type: 'POST',
+        dataType: "json",
+        data: { 'post_id': likePostId },
+      })
+      // Ajaxリクエストが成功した場合
+      .done(function (data) {
+        console.log('成功');
+        console.log(data);
+        $this.toggleClass('loved');
+      })
+      // Ajaxリクエストが失敗した場合
+      .fail(function (data) {
+        console.log('エラー');
+        console.log(data);
+      });
     });
-  });

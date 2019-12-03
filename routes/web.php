@@ -26,9 +26,7 @@ Route::group(['middleware' => 'auth'], function() {
     // 投稿削除機能
     Route::get('/posts/delete/{post_id}', 'PostsController@destroy');
     // いいねの処理
-    Route::post('/posts/{post_id}/likes', 'LikesController@store');
-    // いいねの削除処理
-    Route::get('/likes/{like_id}', 'LikesController@destroy');
+    Route::post('/posts/ajaxlike', 'LikesController@ajaxlike');
     // いいね一覧
     Route::get('/likes', 'LikesController@index')->name('favorite');
 });
