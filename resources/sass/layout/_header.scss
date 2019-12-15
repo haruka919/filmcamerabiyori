@@ -1,7 +1,9 @@
 .l-header{
   width: 100%;
-  background-color: $_color-bg--base;
   height: 70px;
+  @include _mq-up(){
+    height: 100px;
+  }
 }
 #is-loading{
   display: block;

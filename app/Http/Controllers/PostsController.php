@@ -12,14 +12,15 @@ class PostsController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','desc')->get();
         $tagmenus = Tag::all();
         return view('post/index', ['posts' => $posts, 'tagmenus' => $tagmenus]);
     }
 
     public function new()
     {
-        return view('post/new');
+        $tagmenus = Tag::all();
+        return view('post/new', ['tagmenus' => $tagmenus]);
     }
 
     public function store(Request $request)
@@ -41,16 +42,18 @@ class PostsController extends Controller
             $constraint->aspectRatio();
         });
         
+        
         $post = new Post;
         $post->title = $request->title;
         $post->user_id = Auth::user()->id;
+        
+        $post->photo = str_random(30);
         $post->save();
 
         //画像登録
-        $file_name = $post->id . '.jpg';
+        $file_name = $post->photo. '.jpg';
         $save_path = storage_path('app/public/post_images/'.$file_name);        
         $img->save($save_path);
-
 
         // タグの登録
         $tags_name = $request->input('tags');
@@ -71,7 +74,8 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::where('id', $id)->firstOrFail();
-        return view('post/show', ['post' => $post]);
+        $tagmenus = Tag::all();
+        return view('post/show', ['post' => $post, 'tagmenus' => $tagmenus]);
     }
     public function showByTag($id){
         $tag = Tag::find($id);

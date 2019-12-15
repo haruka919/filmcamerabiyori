@@ -26,7 +26,7 @@
         -moz-osx-font-smoothing: auto;
         /* メトリクスカーニングを指定する */
         font-kerning: normal;
-        background-color: #fff;
+        background-color: #f4f0e9;
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -36,36 +36,10 @@
         color: inherit;
     }
     
-    h1 {}
-    h2 {}
-    h3 {}
-    h4 {}
-    h5 {}
-    h6 {}
-    
-    
-    /**
-       * ネストされたリストのマージンをリセットします。
-       */
     li {
-    > ul, > ol {
-        margin-bottom: 0;
-    }
-    }
-    
-    /**
-    * `dt`と`dd`の左端を揃えます。
-    */
-    dd {
-        margin-left: 0;
-    }
-    
-    table {
-        width: 100%;
-    }
-    
-    th {
-        text-align: left;
+        > ul, > ol {
+            margin-bottom: 0;
+        }
     }
     
     a {
@@ -81,38 +55,7 @@
     }
     
     img {
-        max-width: 100%;
+        width: 100%;
         height: auto;
         vertical-align: middle;
-    }
-    
-    /**
-       * IEでSVGがフルードイメージにならない不具合があります。
-       * 属性値が`.svg`で終わる要素に適応します。
-       */
-    [src$=".svg"],
-    [data$=".svg"] {
-        width: 100%;
-    }
-    
-    /**
-    * 日本語では斜体を使用しないためリセットします。
-    */
-    i,
-    cite,
-    em,
-    address,
-    dfn {
-    font-style: normal;
-    }
-    
-    h1, h2, h3, h4, h5, h6,
-    ul, ol, dl,
-    blockquote, p, address,
-    hr,
-    table,
-    fieldset, figure,
-    pre {
-        margin-top: 0;
-        margin-bottom: 0;
     }

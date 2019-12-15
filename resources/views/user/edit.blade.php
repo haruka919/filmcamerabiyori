@@ -22,9 +22,9 @@
                             <div class="p-profileEdit-form__pic-wrapper">
                                 <label class="p-profileEdit-form__pic js-form-pic">
                                     <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-                                    <input type="file" class="p-profileEdit-form__pic-input js-form-picFile" name="user_profile_photo"  value="{{ old('user_profile_photo',$user->id) }}" accept="image/jpeg,image/gif,image/png" />
+                                    <input type="file" class="p-profileEdit-form__pic-input js-form-picFile" name="user_profile_photo" value="{{ old('user_profile_photo', $user->profile_photo) }}.jpg" accept="image/jpeg,image/gif,image/png" />
                                     @if ($user->profile_photo)
-                                        <img class="js-form-preview" src="{{ asset('storage/user_images/' .$user->profile_photo) }}" alt="avatar" />
+                                        <img class="js-form-preview" src="{{ asset('storage/user_images/' .$user->profile_photo) }}.jpg" alt="avatar" />
                                     @else
                                         <img class="js-form-preview" src={{ asset('image/dammy.jpg') }} alt="">
                                     @endif

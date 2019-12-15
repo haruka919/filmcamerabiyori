@@ -5,8 +5,47 @@
   &-deleteIcon{
     position: absolute;
     display: block;
+    cursor: pointer;
     width: 15px;
     right: 0px;
     top: -20px;
+  }
+  &-shareWrapper{
+    margin-top: 40px;
+    text-align: center;
+  }
+  &-shareTitle{
+    margin-bottom: 10px;
+  }
+  &-shareBtns{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    align-items: flex-end;
+  }
+  &-image{
+    border: 5px solid #ffffff;
+  }
+  &-title{
+    font-size: 20px;
+  }
+  &-shareBtn{
+    display: inline-block;
+    width: 30px;
+    svg{
+      fill: #8e99a8;
+      transition: 0.2s;;
+    }
+    &:hover{
+      .as_twitter{
+        fill: #24A9E6;
+      }
+      .as_facebook{
+        fill: #43619C;
+      }
+    }
+    + .p-singlePost-shareBtn{
+      margin-left: 20px;
+    }
   }
 }

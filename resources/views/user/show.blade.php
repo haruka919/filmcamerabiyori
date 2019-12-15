@@ -16,7 +16,7 @@
                 <div class="p-profile">
                     @if ($user->profile_photo)
                         <figure class="c-avator p-profile-avator">
-                            <img src="{{ asset('storage/user_images/' . $user->profile_photo) }}">
+                            <img src="{{ asset('storage/user_images/' . $user->profile_photo) }}.jpg">
                         </figure>
                     @else
                         <figure class="c-avator p-profile-avator">
@@ -46,8 +46,8 @@
                 @foreach ($posts as $post)
                     <div class="c-post p-profile-post">
                         <a href="/posts/{{ $post->id }}">
-                            <figure class="c-post-image">
-                                <img src="/storage/post_images/{{ $post->id }}.jpg" alt="">
+                            <figure class="c-post-image p-profile-post-image">
+                                <img src="/storage/post_images/{{ $post->photo }}.jpg" alt="">
                             </figure>
                         </a>
                         <div class="p-profile-post-textWrapper c-post-textWrapper">

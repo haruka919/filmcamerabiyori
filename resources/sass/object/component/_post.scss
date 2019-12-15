@@ -2,11 +2,9 @@
 // p-post
 // ========================================
 .c-posts{
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  @include _mq-up(sm){
-    display: flex;
-    flex-wrap: wrap;
-  }
   &::after{
     @include _mq-up(xl){
       content:"";
@@ -20,8 +18,10 @@
   }
 }
 .c-post{
-  margin-bottom: 35px;
+  margin-bottom: 15px;
+  width: calc(( 100% - 20px ) / 2);
   @include _mq-up(){
+    margin-bottom: 35px;
     width: calc(( 100% - 30px ) / 2);
   }
   @include _mq-up(xl){
@@ -36,15 +36,23 @@
     justify-content: space-between;
   }
   &-title{
-    font-size: 20px;
-    margin-bottom: 12px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    @include _mq-up(){
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
   }
   &-image{
     position: relative;
-    margin-bottom: 30px;
-    border: 5px solid #ffffff;
+    margin-bottom: 20px;
+    border: 3px solid #ffffff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     transition: 400ms;
+    @include _mq-up(){
+      margin-bottom: 30px;
+      border: 5px solid #ffffff;
+    }
     &::before{
       content: '';
       position: absolute;
@@ -53,21 +61,30 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      right: -15px;
-      bottom: -15px;
+      right: -10px;
+      bottom: -10px;
+      @include _mq-up(){
+        right: -15px;
+        bottom: -15px;
+      }
     }
     &::after{
       content: '';
       position: absolute;
       display: block;
-      background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+      background-image: linear-gradient(-45deg, #FFC796 0%, #FF6B95 100%);
+      
       width: 100%;
       height: 100%;
       z-index: -1;
-      right: -15px;
-      bottom: -15px;
+      right: -10px;
+      bottom: -10px;
       opacity: 0;
       transition: 400ms;
+      @include _mq-up(){
+        right: -15px;
+        bottom: -15px;
+      }
     }
   }
   a:hover{

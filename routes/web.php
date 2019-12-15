@@ -26,16 +26,17 @@ Route::group(['middleware' => 'auth'], function() {
     // 投稿削除機能
     Route::get('/posts/delete/{post_id}', 'PostsController@destroy');
     // いいねの処理
+    Route::get('/posts/{post_id}/likes', 'LikesController@store');
+    // いいねの削除処理
+    Route::get('/likes/{like_id}', 'LikesController@destroy');
+    // いいねの処理（ajax）
     Route::post('/posts/ajaxlike', 'LikesController@ajaxlike');
     // いいね一覧
     Route::get('/likes', 'LikesController@index')->name('favorite');
 });
 
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 // ログイン認証なし
 // ユーザー詳細画面

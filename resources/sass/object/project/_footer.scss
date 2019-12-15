@@ -1,6 +1,6 @@
 .p-footer{
   border-top: 1px solid #f0f0f0;
-  background-color: rgba( #F5F5F5, 0.95 );
+  background-color: #413420;
   height: 60px;
   @include _mq-up(){
     height: 80px;
@@ -11,52 +11,13 @@
     justify-content: center;
     align-items: center;
   }
-  nav{
-    height: 100%;
-  }
-  &-menu{
+  &-copyright{
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
-    align-items: stretch;
-    &__item{
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      a{
-        display: inline-block;
-      }
-      img{
-        height: 30px;
-        width: 30px;
-        object-fit: contain;
-        @include _mq-up(){
-          height: 48px;
-          width: 48px;
-        }
-      }
-      &.-icon img{
-        height: 30px;
-        width: 30px;
-        object-fit: contain;
-        @include _mq-up(){
-          height: 48px;
-          width: 48px;
-        }
-      }
-      &:last-child{
-        img{
-          height: 48px;
-          width: 48px;
-          object-fit: cover;
-        }
-      }
-    }
-    &__avator{
-      width: 48px;
-      height: 48px;
-    }
+    font-size: 12px;
+    color: #fff;
   }
   &__txt{
     font-size: 12px;

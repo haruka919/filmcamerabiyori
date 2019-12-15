@@ -54,8 +54,9 @@ class UsersController extends Controller
 
 
         if($request->user_profile_photo != null){
+            $profilepath = str_random(30);
 
-            $file_name = $user->id . '.jpg';
+            $file_name = $profilepath;
             $save_path = storage_path('app/public/user_images/'.$file_name);        
             $img->save($save_path);
 

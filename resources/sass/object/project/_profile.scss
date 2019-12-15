@@ -13,6 +13,7 @@
   }
   &-textWrapper{
     padding: 10px 0 0 10px;
+    flex: 1;
   }
   &-name{
     font-size: 20px;
@@ -40,15 +41,45 @@
   &-posts{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
   }
   &-post{
-    width: calc(( 100% - 30px ) / 2);
+    width: calc(( 100% - 20px ) / 2);
+    margin-bottom: 20px;
+    @include _mq-up(){
+      width: calc(( 100% - 30px ) / 2);
+      margin-bottom: 30px;
+    }
     &-textWrapper{
       text-align: center;
     }
     &-title{
-      font-size: 12px;
+      font-size: 14px;
       margin-bottom: 0;
+    }
+    &-image{
+      margin-bottom: 20px;
+      border: 3px solid #ffffff;
+      @include _mq-up(){
+        margin-bottom: 30px;
+        border: 5px solid #ffffff;
+      }
+      &::before{
+        right: -10px;
+        bottom: -10px;
+        @include _mq-up(){
+          right: -15px;
+          bottom: -15px;          
+        }
+      }
+      &::after{
+        right: -10px;
+        bottom: -10px;
+        @include _mq-up(){
+          right: -15px;
+          bottom: -15px;          
+        }
+      }
     }
   }
 }

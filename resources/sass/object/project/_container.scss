@@ -1,4 +1,9 @@
 .p-container{
+  &-xl{
+    max-width: 2000px;
+    width: 100%;
+    margin: 0 auto;
+  }
   &-l{
     max-width: 1200px;
     width: 100%;

@@ -20,7 +20,7 @@
                     <div class="p-container-m">
                         <label class="p-postEdit-form__pic js-form-pic">
                             <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
-                            <input type="file" class="p-postEdit-form__pic-input js-form-picFile" name="photo"  value="{{ old('photo') }}" accept="image/jpeg,image/gif,image/png" />
+                            <input type="file" class="p-postEdit-form__pic-input js-form-picFile" name="photo" value="{{ old('photo') }}" accept="image/jpeg,image/gif,image/png" />
                             <img class="p-postEdit-form__pic-preview js-form-preview" src={{ asset('image/dammy.jpg') }} alt="">
                             <i class="fas fa-plus p-postEdit-form__icon"></i>
                         </label>

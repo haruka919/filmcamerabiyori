@@ -33,4 +33,25 @@ class LikesController extends Controller
             return response()->json($like);
         }
     }
+
+    public function store(Request $request)
+    {
+        $post_id = $request->post_id;
+        $liked = Like::where('post_id', $post_id)->where('user_id', Auth::user()->id)->count();
+        if($liked > 0){
+            return redirect('/');
+        }else{
+            $like = new Like;
+            $like->post_id = $request->post_id;
+            $like->user_id = Auth::user()->id;
+            $like->save();
+            return redirect('/');
+        }
+    }
+    public function destroy(Request $request)
+    {
+        $like = Like::find($request->like_id);
+        $like->delete();
+        return redirect('/');
+    }
 }
